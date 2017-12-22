@@ -16,3 +16,4 @@ Quick start
       'core_module_auto_key_app',
     ]
 
+    PARSER_AUTO_KEY_KEYREF = True
