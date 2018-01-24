@@ -4,10 +4,10 @@ from core_module_auto_key_app.components.auto_key import api as auto_key_api
 from core_module_auto_key_app.components.auto_key.models import AutoKey
 from core_parser_app.components.data_structure_element import api as data_structure_element_api
 from core_parser_app.tools.modules.exceptions import ModuleError
-from core_parser_app.tools.modules.views.builtin.sync_input_module import SyncInputModule
+from core_parser_app.tools.modules.views.builtin.sync_input_module import AbstractSyncInputModule
 
 
-class AutoKeyModule(SyncInputModule):
+class AutoKeyModule(AbstractSyncInputModule):
     """ Auto Key module
     """
 
@@ -19,7 +19,7 @@ class AutoKeyModule(SyncInputModule):
             raise ModuleError('A function for the generation of the keys should be provided (key_gen_func is None).')
 
         self.key_gen_func = key_gen_func
-        SyncInputModule.__init__(self, modclass='mod_auto_key', disabled=True)
+        AbstractSyncInputModule.__init__(self, modclass='mod_auto_key', disabled=True)
 
     def _render_module(self, request):
         """ Returns the module
@@ -31,7 +31,7 @@ class AutoKeyModule(SyncInputModule):
 
         """
         self.default_value = self.data
-        return SyncInputModule._render_module(self, request)
+        return AbstractSyncInputModule._render_module(self, request)
 
     def _retrieve_data(self, request):
         """
