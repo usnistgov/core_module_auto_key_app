@@ -11,7 +11,7 @@ from core_parser_app.components.data_structure_element.models import DataStructu
 class AutoKey(Document):
     """ Auto Key keeps track of keys
     """
-    root = fields.ReferenceField(DataStructureElement)
+    root = fields.ReferenceField(DataStructureElement, unique=True)
     keys = fields.DictField(default={}, blank=True)
 
     @staticmethod
