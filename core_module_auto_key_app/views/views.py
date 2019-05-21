@@ -93,7 +93,7 @@ class AutoKeyModule(AbstractSyncInputModule):
 
                     # generate next key
                     data = str(self.key_gen_func(values))
-            except Exception, e:
+            except Exception as e:
                 raise ModuleError("An unexpected error occurred in AutoKeyModule: " + e.message)
 
         return data
