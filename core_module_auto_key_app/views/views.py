@@ -1,5 +1,6 @@
 """ Auto Key module
 """
+from builtins import str
 from core_module_auto_key_app.components.auto_key import api as auto_key_api
 from core_module_auto_key_app.components.auto_key.models import AutoKey
 from core_parser_app.components.data_structure_element import api as data_structure_element_api
@@ -63,7 +64,7 @@ class AutoKeyModule(AbstractSyncInputModule):
                     auto_key_api.upsert(auto_key)
 
                 # if key id not already present in auto key manager
-                if key_id not in auto_key.keys.keys():
+                if key_id not in list(auto_key.keys.keys()):
                     # initialize key id entry
                     auto_key.keys[key_id] = []
 
@@ -94,7 +95,7 @@ class AutoKeyModule(AbstractSyncInputModule):
                     # generate next key
                     data = str(self.key_gen_func(values))
             except Exception as e:
-                raise ModuleError("An unexpected error occurred in AutoKeyModule: " + e.message)
+                raise ModuleError("An unexpected error occurred in AutoKeyModule: " + str(e))
 
         return data
 
