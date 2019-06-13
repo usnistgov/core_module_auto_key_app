@@ -1,6 +1,5 @@
 """ Auto Key module
 """
-from builtins import str
 from core_module_auto_key_app.components.auto_key import api as auto_key_api
 from core_module_auto_key_app.components.auto_key.models import AutoKey
 from core_parser_app.components.data_structure_element import api as data_structure_element_api
