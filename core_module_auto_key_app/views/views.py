@@ -1,10 +1,14 @@
 """ Auto Key module
 """
+import logging
+
 from core_module_auto_key_app.components.auto_key import api as auto_key_api
 from core_module_auto_key_app.components.auto_key.models import AutoKey
 from core_parser_app.components.data_structure_element import api as data_structure_element_api
 from core_parser_app.tools.modules.exceptions import ModuleError
 from core_parser_app.tools.modules.views.builtin.sync_input_module import AbstractSyncInputModule
+
+logger = logging.getLogger(__name__)
 
 
 class AutoKeyModule(AbstractSyncInputModule):
@@ -88,8 +92,8 @@ class AutoKeyModule(AbstractSyncInputModule):
                             key_module = data_structure_element_api.get_by_id(key_module_id)
                             if key_module.options['data'] is not None:
                                 values.append(key_module.options['data'])
-                        except:
-                            pass
+                        except Exception as e:
+                            logger.warning("_retrieve_data threw an exception: {0}".format(str(e)))
 
                     # generate next key
                     data = str(self.key_gen_func(values))
