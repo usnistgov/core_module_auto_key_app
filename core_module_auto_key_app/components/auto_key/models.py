@@ -6,13 +6,18 @@ from mongoengine import errors as mongoengine_errors
 from mongoengine.queryset.base import CASCADE
 
 from core_main_app.commons import exceptions
-from core_parser_app.components.data_structure_element.models import DataStructureElement
+from core_parser_app.components.data_structure_element.models import (
+    DataStructureElement,
+)
 
 
 class AutoKey(Document):
     """ Auto Key keeps track of keys
     """
-    root = fields.ReferenceField(DataStructureElement, reverse_delete_rule=CASCADE, unique=True)
+
+    root = fields.ReferenceField(
+        DataStructureElement, reverse_delete_rule=CASCADE, unique=True
+    )
     keys = fields.DictField(default={}, blank=True)
 
     @staticmethod
