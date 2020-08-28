@@ -12,8 +12,7 @@ from core_parser_app.components.data_structure_element.models import (
 
 
 class AutoKey(Document):
-    """ Auto Key keeps track of keys
-    """
+    """Auto Key keeps track of keys"""
 
     root = fields.ReferenceField(
         DataStructureElement, reverse_delete_rule=CASCADE, unique=True
@@ -22,7 +21,7 @@ class AutoKey(Document):
 
     @staticmethod
     def get_by_root(root):
-        """ Return the object with the given root.
+        """Return the object with the given root.
 
         Args:
             root:

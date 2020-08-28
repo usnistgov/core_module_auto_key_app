@@ -16,13 +16,10 @@ logger = logging.getLogger(__name__)
 
 
 class AutoKeyModule(AbstractSyncInputModule):
-    """ Auto Key module
-    """
+    """Auto Key module"""
 
     def __init__(self, key_gen_func):
-        """Initializes the module
-
-        """
+        """Initializes the module"""
         if key_gen_func is None:
             raise ModuleError(
                 "A function for the generation of the keys should be provided (key_gen_func is None)."
@@ -32,7 +29,7 @@ class AutoKeyModule(AbstractSyncInputModule):
         AbstractSyncInputModule.__init__(self, modclass="mod_auto_key", disabled=True)
 
     def _render_module(self, request):
-        """ Returns the module
+        """Returns the module
 
         Args:
             request:

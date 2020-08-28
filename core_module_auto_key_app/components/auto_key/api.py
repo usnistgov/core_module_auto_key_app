@@ -4,7 +4,7 @@ from core_module_auto_key_app.components.auto_key.models import AutoKey
 
 
 def upsert(auto_key):
-    """ Save or update AutoKey
+    """Save or update AutoKey
 
     Args:
         auto_key:
@@ -16,7 +16,7 @@ def upsert(auto_key):
 
 
 def get_by_root(root):
-    """ Get AutoKey by root element
+    """Get AutoKey by root element
 
     Args:
         root:
