@@ -55,12 +55,14 @@ class AutoKeyModule(AbstractSyncInputModule):
                 # get module id
                 module_id = request.GET["module_id"]
                 # get module element form module id
-                module = data_structure_element_api.get_by_id(module_id)
+                module = data_structure_element_api.get_by_id(module_id, request)
                 # get key id form module
                 key_id = module.options["params"]["key"]
 
                 # get XML document root element from module element
-                root_element = data_structure_element_api.get_root_element(module)
+                root_element = data_structure_element_api.get_root_element(
+                    module, request
+                )
                 try:
                     # get auto key manager from db
                     auto_key = auto_key_api.get_by_root(root_element)
@@ -93,7 +95,7 @@ class AutoKeyModule(AbstractSyncInputModule):
                     for key_module_id in module_ids:
                         try:
                             key_module = data_structure_element_api.get_by_id(
-                                key_module_id
+                                key_module_id, request
                             )
                             if key_module.options["data"] is not None:
                                 values.append(key_module.options["data"])
